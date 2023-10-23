@@ -1,0 +1,19 @@
+
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+g
+7src/main/java/com/lisi4ka/web_lab3/BeanCoordinates.java,f\f\ff2983cb4ef8d017444820242ee2221865ef58a0
+J
+src/main/webapp/page.xhtml,f\a\fa7cfc191a01337c373cada343bed505511a4197
+K
+src/main/webapp/index.xhtml,b\b\bb585a12746e3c58077a000cb566d3b2b7ff11e3
+X
+(src/main/webapp/WEB-INF/faces-config.xml,9\2\921ab541b29cd2aba50bbba38a0af79890ebe16a
+O
+src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
+d
+4src/main/java/com/lisi4ka/web_lab3/DotValidator.java,7\7\7762fa75b6e9941e85211327886dcadd235c5bdc
+_
+/src/main/java/com/lisi4ka/web_lab3/GetData.java,7\b\7b230d38ba5ee878f6af35d28fb49b1570d4d8d7
+g
+7src/main/java/com/lisi4ka/web_lab3/GraphicsServlet.java,f\5\f572dbb88f9004e77d2c4322be9f173c7c4fa2ee
