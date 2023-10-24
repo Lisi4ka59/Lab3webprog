@@ -76,6 +76,7 @@ public class BeanCoordinates implements Serializable {
             stringBuilder.append(text).append("</td></tr>");
             stringBuilder.append(history);
             history = stringBuilder.toString();
+            setResult("<tr style=\" text-align: center\"><td>" + X + "</td><td>" + Y + "</td><td>" + inputR + "</td><td>" + text + "</td></tr>");
         }
     }
 

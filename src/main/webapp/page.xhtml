@@ -67,11 +67,11 @@
 
 
 
-    <img src="static/img/back.jpg" alt="back" id="back"/>
+    <img src="resources/img/back.jpg" alt="back" id="back"/>
     <div class="intro" id="intro"></div>
     <div class="container">
     <div class="data">
-        <img src="static/img/capy.jpg" alt="profile" class="profile-pic"/>
+        <img src="resources/img/capy.jpg" alt="profile" class="profile-pic"/>
         <div class="header-info">
             <p style="font-size: 34px"><b>Mikhail Nachinkin</b></p>
             <p>Группа: P3206</p>
@@ -120,7 +120,20 @@
             </div>
         </div>
             </div>
+            <div class="table">
+                <table class="res">
+                    <tr style="border-collapse: collapse">
+                        <th style="border-top-left-radius: 15px; text-align: center">Координата Х</th>
+                        <th style=" text-align: center">Координата У</th>
+                        <th style=" text-align: center">Значение R</th>
+                        <th style="border-top-right-radius: 15px; text-align: center ">Результат</th>
+                    </tr>
+                    <h:outputText id="hist" escape="false" value="#{beanCoordinates.result}"/>
+                </table>
+            </div>
+
         </div>
+
 
 
 
