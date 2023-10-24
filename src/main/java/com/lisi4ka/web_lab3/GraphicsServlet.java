@@ -26,17 +26,13 @@ public class GraphicsServlet extends HttpServlet {
 
         BufferedImage image = new BufferedImage(200, 200, BufferedImage.TYPE_BYTE_INDEXED);
 
-    float x = Float.parseFloat(request.getParameter("x"));
-    float y = Float.parseFloat(request.getParameter("y"));
-
-//        float radius;
-//        float random = Float.parseFloat(request.getParameter("rand"));
+    float x = (Float.parseFloat(request.getParameter("x")));
+    float y = (Float.parseFloat(request.getParameter("y")));
 
         float radius;
         float random = 0.5F;
         try {
-            //radius = Float.parseFloat(request.getParameter("r"));
-            radius = 1;
+            radius = Float.parseFloat(request.getParameter("r"));
         }catch (Exception ex){
             Graphics2D graphics = image.createGraphics();
             graphics.setColor(Color.WHITE);
@@ -72,9 +68,9 @@ public class GraphicsServlet extends HttpServlet {
         graphics.setColor(new Color(255,255,255));
         graphics.fillRect(0,0, 200, 200);
         graphics.setColor(new Color(51, 153, 255));
-        graphics.fillRect(27, 100, 73, 36);
-        graphics.fillArc(26, 26, 150, 150, 90, 90);
-        graphics.fillPolygon(new int[]{100, 100, 137}, new int[] {100, 63, 100}, 3);
+        graphics.fillRect(27+37, 100-72, 35, 72);
+        graphics.fillArc(62, 62, 75, 75, 270, 90);
+        graphics.fillPolygon(new int[]{100, 100, 173}, new int[] {100, 26, 100}, 3);
         graphics.setColor(new Color(0,0,0));
         graphics.fillRect(8, 99, 184, 2);
         graphics.fillRect(99, 8, 2, 184);
@@ -112,7 +108,7 @@ public class GraphicsServlet extends HttpServlet {
 
         if (x != 1000) {
             graphics.setColor(new Color(re, gr, bl));
-            graphics.fillOval(roundx + 100 - 2, -(roundy - 100 + 2), 5, 5);
+            graphics.fillOval(roundx + 100 - 3, -(roundy - 100 + 3), 5, 5);
         }
 //        Enumeration<String> attributes = request.getSession().getAttributeNames();
 //        ArrayList<String> list = new ArrayList<>();

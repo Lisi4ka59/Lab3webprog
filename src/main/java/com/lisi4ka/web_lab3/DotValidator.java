@@ -7,7 +7,7 @@ public class DotValidator {
             int re;
             int bl;
             String text;
-            if (((X <= 0 && X > -R) && (Y <= 0 && Y > -R/2)) || ((X >= 0 && Y >= 0) && ((X + Y) < R/2)) || ((X <= 0 && Y >= 0) && ((Math.pow(X, 2) + Math.pow(Y, 2) < Math.pow(R, 2))))) {
+            if (((X <= 0 && X > -R/2) && (Y >= 0 && Y < R)) || ((X >= 0 && Y >= 0) && ((X + Y) < R)) || ((X >= 0 && Y <= 0) && ((Math.pow(X, 2) + Math.pow(Y, 2) < Math.pow(R/2, 2))))) {
                 if (random < 0.5) {
                     gr = 60;
                     re = 60;
@@ -22,7 +22,7 @@ public class DotValidator {
                     return new String[] {String.valueOf(re), String.valueOf(gr), String.valueOf(bl), text};
                 }
             } else {
-                if (((X <= 0 && Y <= 0) && (X == -R || Y == -R/2) || ((X >= 0) && (Y >= 0)) && (X + Y == R/2)) || ((X <= 0 && Y >= 0) && ((Math.pow(X, 2) + Math.pow(Y, 2) == Math.pow(R, 2))))) {
+                if (((X <= 0 && Y >= 0) && (X == -R/2 || Y == R) || ((X >= 0) && (Y >= 0)) && (X + Y == R)) || ((X >= 0 && Y <= 0) && ((Math.pow(X, 2) + Math.pow(Y, 2) == Math.pow(R/2, 2))))) {
                     gr = 150;
                     re = 150;
                     bl = 150;

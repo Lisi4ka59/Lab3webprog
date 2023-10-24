@@ -22,23 +22,14 @@
             }
         }
         function valid(){
-            let x = jQuery("#vvodx").val();
-            let y = jQuery("#vvody").val();
-
-            //jQuery("#group").html(x.lenght());
+            let y = jQuery("#forma\\:vvody").val();
             if(isNaN(y) || y=="" || countDigits(y) || !((5>=y &amp; y>=-5))){
-                vvody.classList.add('invalid');
+                jQuery("#forma\\:vvody").addClass('invalid');
             }
-            if(isNaN(x) || x=="" || !(x==-5 || x==-4 || x==-3 || x==-2 || x==-1 || x==0 || x==1 || x==2 || x==3)){
-                vvodx.classList.add('invalid');
+            if ((3>=y &amp; y>=-5) &amp; !(isNaN(y) || y=="" || countDigits(y))){
+                jQuery("#forma\\:vvody").removeClass('invalid');
             }
-            if ((5>=y &amp; y>=-5) &amp; !(isNaN(y) || y=="" || countDigits(y))){
-                vvody.classList.remove('invalid');
-            }
-            if ((x==-5 || x==-4 || x==-3 || x==-2 || x==-1 || x==0 || x==1 || x==2 || x==3 ) &amp; !(isNaN(x) || x=="")){
-                vvodx.classList.remove('invalid');
-            }
-            if ((5>=y &amp; y>=-5) &amp; (x==-5 || x==-4 || x==-3 || x==-2 || x==-1 || x==0 || x==1 || x==2 || x==3) &amp; !(isNaN(y) || y=="" || countDigits(y)) &amp; !(isNaN(x) || x=="")){
+            if ((3>=y &amp; y>=-5) &amp; !(isNaN(y) || y=="" || countDigits(y))){
                 return true;}
             return false;
 
@@ -56,16 +47,10 @@
         jQuery(".xbutton").on("click", function(){jQuery("#vvodx").val(jQuery(this).html());
             event.preventDefault();
             keyevent();});
-        jQuery("#vvodx").on("keypress", keyevent);
-        jQuery("#vvody").on("keypress", keyevent);
-        jQuery("#vvodx").on("change", keyevent);
-        jQuery("#vvody").on("change", keyevent);
-        jQuery("#vvodx").on("click", keyevent);
-        jQuery("#vvody").on("click", keyevent);
-        jQuery("#vvodx").on("hover", keyevent);
-        jQuery("#vvody").on("hover", keyevent);
-        jQuery("#vvodx").on("keyup", keyevent);
-        jQuery("#vvody").on("keyup", keyevent);
+        jQuery("#forma\\:vvody").on("keypress", keyevent);
+        jQuery("#forma\\:vvody").on("click", keyevent);
+        jQuery("#forma\\:vvody").on("hover", keyevent);
+        jQuery("#forma\\:vvody").on("keyup", keyevent);
 
         jQuery("#forma").on("submit", function(){
             if(!valid()){
@@ -73,37 +58,14 @@
                 keyevent();
             };
         });
-        //jQuery(".vvod").on("click", keyevent);
-
     });
 
 </h:outputScript>
 <h:body>
 
 <f:view>
-    <h:outputLabel value="Hello, world"/>
-    <h:form id="inputForm"> X <h:inputText name="inputX" value="#{beanCoordinates.inputX}" id="inputX"/> <h:commandButton action="index"> t </h:commandButton> </h:form>
-        <h:form id="graphForm">
-            <h:graphicImage id="image" value="GraphicsServlet?x=0#{getData.x}&amp;y=0#{getData.y}" >
-                <f:ajax event="click" execute="x y" listener="#{getData.imageclk}" render="panel_2" />
-            </h:graphicImage>
-            <h:inputHidden id="x" value="#{getData.x}" />
-            <h:inputHidden id="y" value="#{getData.y}" />
-        </h:form>
 
-        <h:outputScript>
-            jQuery("img[id$=':image']").on("mousedown", function(event) {
-                var $form = jQuery(this).closest("form");
-                $form.find("input[id$=':x']").val(event.pageX - parentOffset.left);
-                $form.find("input[id$=':y']").val(event.pageY - parentOffset.top);
-                d = new Date();
-                $("#graphForm\\:image").attr("src", "GraphicsServlet?x="+event.pageX+"&amp;y="+event.pageY);
-            });
-        </h:outputScript>
-        <h:panelGrid id="panel_2">
 
-            here:#{getData.somedata}
-        </h:panelGrid>
 
     <img src="static/img/back.jpg" alt="back" id="back"/>
     <div class="intro" id="intro"></div>
@@ -114,48 +76,58 @@
             <p style="font-size: 34px"><b>Mikhail Nachinkin</b></p>
             <p>Группа: P3206</p>
             <p>Вариант: 1734</p>
-            <a href="https://vk.com/nachinkin1" ><img src="static/img/VK logo.png" alt="vk" class="contact"/></a>
-            <a href="https://github.com/Lisi4ka59" ><img src="static/img/github logo.png" alt="github" class="contact"/></a>
-            <a href="https://isu.ifmo.ru/pls/apex/f?p=2437:99:106462222053412" ><img src="static/img/ITMO logo.png" alt="itmo" class="contact"/></a>
+            <a href="https://vk.com/nachinkin1" ><img src="resources/img/VK logo.png" alt="vk" style="border-radius: 30px" class="contact"/></a>
+            <a href="https://github.com/Lisi4ka59" ><img src="resources/img/github logo.png" alt="github" class="contact"/></a>
+            <a href="https://isu.ifmo.ru/pls/apex/f?p=2437:99:106462222053412" ><img src="resources/img/ITMO logo.png" alt="itmo" class="contact"/></a>
+            <a href="http://localhost:8080/web_lab3-1.0-SNAPSHOT/index.xhtml" ><img src="resources/img/main.png" alt="index" class="contact"/></a>
+
         </div>
     </div>
-    <form action="ControllerServlet" method="POST" id="forma">
+    <h:form id="forma">
 
         <div class="xy_table">
-            <div id="da">
-                <div id="d" >
-
-                </div>
+            <div id="da" style="padding: 0; border-radius: 10px">
+                    <h:graphicImage value="GraphicsServlet?x=#{beanCoordinates.inputX * 74 / beanCoordinates.inputR + 100}&amp;y=#{100 - beanCoordinates.inputY * 74 / beanCoordinates.inputR}&amp;r=#{beanCoordinates.inputR}"/>
                 <div id="resultat">
                 </div>
             </div>
-            <div class="xy"> <div id="X"> X </div><div class="input"><label for="vvodx"></label><input class="in" type="text" name="X" id="vvodx"/></div> <div class="button"> <button class="xbutton"> -5 </button> <button class="xbutton"> -4 </button>  <button class="xbutton"> -3 </button> <button class="xbutton"> -2 </button>  <button class="xbutton"> -1 </button> <button class="xbutton"> 0 </button>  <button class="xbutton"> 1 </button>  <button class="xbutton"> 2 </button>  <button class="xbutton"> 3 </button> </div>   </div>
-            <div class="xy"> <div><label for="vvody">Y</label></div><div class="input"><input class="in" type="text" name="Y" id="vvody"/> </div>  </div>
-            <div class="xy"> <div> R </div><div class="input"><label>
-                <input class="radi" type="radio" name="R" value="1"/>
-            </label> 1
-                <label>
-                    <input class="radi" type="radio" name="R" value="1.5"/>
-                </label> 1.5 <label>
-                    <input class="radi" type="radio" name="R" value="2"/>
-                </label> 2 <label>
-                    <input class="radi" type="radio" name="R" value="2.5"/>
-                </label> 2.5 <label>
-                    <input class="radi" type="radio" name="R" value="3"/>
-                </label> 3 </div>  </div>
-            <div class="wrapper">
-                <input class="sub" type="submit" value="Submit" id="submit"/>
+            <div class="xy"> <div id="X"> X </div><div class="input"><label for="vvodx"></label>
+                <h:selectOneMenu value="#{beanCoordinates.inputX}" class="in" name="X" id="vvodx">
+                <f:selectItem itemValue = "-3" itemLabel = "-3" />
+                <f:selectItem itemValue = "-2" itemLabel = "-2" />
+                <f:selectItem itemValue = "-1" itemLabel = "-1" />
+                <f:selectItem itemValue = "0" itemLabel = "0" />
+                <f:selectItem itemValue = "1" itemLabel = "1" />
+                <f:selectItem itemValue = "2" itemLabel = "2" />
+                <f:selectItem itemValue = "3" itemLabel = "3" />
+                <f:selectItem itemValue = "4" itemLabel = "4" />
+                <f:selectItem itemValue = "5" itemLabel = "5" />
+            </h:selectOneMenu> </div>
+            <div class="xy"> <div><label for="vvody">Y</label></div><div class="input">
+                <h:inputText value="#{beanCoordinates.inputY}" class="in" name="Y" id="vvody"/> </div>  </div>
+        <div class="xy" > <div> R </div><div class="input"><label></label>
+            <p/>
+                <h:commandLink class="sub" action="#{beanCoordinates.setInputR('1')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 1 "/>
+            <p/>
+                <h:commandLink class="sub" action="#{beanCoordinates.setInputR('1.5')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 1.5"/>
+            <p/>
+                <h:commandLink class="sub" action="#{beanCoordinates.setInputR('2')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 2 "/>
+            <p/>
+                <h:commandLink class="sub" action="#{beanCoordinates.setInputR('2.5')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 2.5"/>
+            <p/>
+                <h:commandLink class="sub" action="#{beanCoordinates.setInputR('3')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 3 "/>
+#{beanCoordinates.setR(beanCoordinates.inputR)}
             </div>
-
-
+        </div>
+            </div>
         </div>
 
 
 
-    </form>
+    </h:form>
     <div id="table">
     <table id="res">
-    <tr >
+    <tr>
         <th style="border-top-left-radius: 10px">Координата Х</th>
         <th>Координата У</th>
         <th>Значение R</th>
@@ -163,52 +135,29 @@
         <th>Время полета снаряда</th>
         <th style="border-top-right-radius: 10px">Результат</th>
     </tr>
+        <h:outputText id="history" escape="false" value="#{beanCoordinates.history}"/>
     </table>
     </div>
+
     </div>
 
     <h:outputScript>
-        jQuery(function(){
-            var S = +($('input[name="R"]:checked').val());
-            $('#d').bind('mousewheel', function(e){
-                var wh = (e.originalEvent.wheelDeltaY / 300) + +S;
-                S = wh;
-                let X = 1000;
-                let Y = 1000;
-                let R = wh;
-                let random = Math.random();
-                jQuery("#d").css("background-image", "url('GraphicsServlet?x=" + X + "&amp;y=" + Y + "&amp;r=" + R + "&amp;rand=" + random + " ')");
-                e.preventDefault();
-            });
-            jQuery("#d").click(function (event){
+            jQuery("#da").click(function (event){
                 let parentOffset = jQuery(this).offset();
-                let X = event.pageX - parentOffset.left;
-                let Y = event.pageY - parentOffset.top;
-                let R = S;
-                let random = Math.random();
-                jQuery("#resultat").load("HitServlet?X=" + X + "&amp;Y=" + Y + "&amp;R=" + R + "&amp;rand=" + random);
-                jQuery("#d").css("background-image", "url('GraphicsServlet?x=" + X + "&amp;y=" + Y + "&amp;r=" + R + "&amp;rand=" + random + " ')");
-                setTimeout(function () {jQuery("#table").load("TableServlet");}, 10);
-            });
-            jQuery(".radi").change(function (event) {
-                let parentOffset = jQuery(this).offset();
-                let X = 1000;
-                let Y = event.pageY - parentOffset.top;
-                S = $('input[name="R"]:checked').val();
-                let R = S;
-                let random = Math.random();
-                jQuery("#d").css("background-image", "url('GraphicsServlet?x=" + X + "&amp;y=" + Y + "&amp;r=" + R + "&amp;rand=" + random + " ')");
+                $("#forma\\:vvodx").val(Math.round((event.pageX - parentOffset.left - 100)/74));
+                $("#forma\\:vvody").val(-((event.pageY - parentOffset.top - 100)/74).toFixed(3));
+                $('#forma').trigger("submit");
             });
             $(window).on('scroll', function (){
                 $('#back').css('top', $(window).scrollTop()/1.5);
             });
-        });
+
 
     </h:outputScript>
 
-    <h:outputScript src="static/JS/three.r134.min.js"></h:outputScript>
-    <h:outputScript src="static/JS/vanta.birds.min.js"></h:outputScript>
-    <h:outputScript src="static/JS/app.js"></h:outputScript>
+    <h:outputScript src="resources/JS/three.r134.min.js"/>
+    <h:outputScript src="resources/JS/vanta.birds.min.js"/>
+    <h:outputScript src="resources/JS/app.js"/>
 </f:view>
 </h:body>
 </html>
