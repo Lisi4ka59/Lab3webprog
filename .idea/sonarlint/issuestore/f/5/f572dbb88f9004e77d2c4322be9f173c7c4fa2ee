@@ -1,11 +1,9 @@
 
-r	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØüÒ“úÿÿÿÿ8‘ÜÏ“µ1
-m	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş÷¡±8’ÜÏ“µ1
-r	java:S1178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­šğûÿÿÿÿ8”ÜÏ“µ1
-]	java:S125 "<This block of commented-out lines of code should be removed.(Îò‡ıÿÿÿÿ8¹ÜÏ“µ1
-X	java:S125&"<This block of commented-out lines of code should be removed.(‡á–ı8¼ÜÏ“µ1
-]	java:S125u"<This block of commented-out lines of code should be removed.(ÈñòÊÿÿÿÿÿ8ÄÜÏ“µ1
+r	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØüÒ“úÿÿÿÿ8å©“ëµ1
+m	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş÷¡±8æ©“ëµ1
+r	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­šğûÿÿÿÿ8æ©“ëµ1
+]	java:S125q"<This block of commented-out lines of code should be removed.(ÈñòÊÿÿÿÿÿ8ª“ëµ1
 M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ÈÜÏ“µ1
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ª“ëµ1
 O
-java:S1128"2Remove this unused import 'java.util.Enumeration'.(»îÜ®8ÊÜÏ“µ1
+java:S1128"2Remove this unused import 'java.util.Enumeration'.(»îÜ®8ª“ëµ1

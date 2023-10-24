@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>Lab3 web</title>
-    <link rel="stylesheet" href="static/CSS/style.css"/>
+    <link rel="stylesheet" href="resources/CSS/style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js" type="text/javascript"/>
 </h:head>
 <h:outputScript>
@@ -36,9 +36,9 @@
         };
         function keyevent(){
             if(!valid()){
-                jQuery("#submit").prop("disabled", true);
+                jQuery("#submition").prop("disabled", true);
             }else{
-                jQuery("#submit").prop("disabled", false);
+                jQuery("#submition").prop("disabled", false);
             }
 
         };
@@ -52,7 +52,7 @@
         jQuery("#forma\\:vvody").on("hover", keyevent);
         jQuery("#forma\\:vvody").on("keyup", keyevent);
 
-        jQuery("#forma").on("submit", function(){
+        jQuery("#forma").on("R", function(){
             if(!valid()){
                 event.preventDefault();
                 keyevent();
@@ -87,7 +87,7 @@
 
         <div class="xy_table">
             <div id="da" style="padding: 0; border-radius: 10px">
-                    <h:graphicImage value="GraphicsServlet?x=#{beanCoordinates.inputX * 74 / beanCoordinates.inputR + 100}&amp;y=#{100 - beanCoordinates.inputY * 74 / beanCoordinates.inputR}&amp;r=#{beanCoordinates.inputR}"/>
+                    <h:graphicImage value="GraphicsServlet?x=#{beanCoordinates.inputX * 74 / beanCoordinates.inputR + 100}&amp;y=#{100 - beanCoordinates.inputY * 74 / beanCoordinates.inputR}&amp;r=#{beanCoordinates.inputR}&amp;e=false"/>
                 <div id="resultat">
                 </div>
             </div>
@@ -107,16 +107,18 @@
                 <h:inputText value="#{beanCoordinates.inputY}" class="in" name="Y" id="vvody"/> </div>  </div>
         <div class="xy" > <div> R </div><div class="input"><label></label>
             <p/>
-                <h:commandLink class="sub" action="#{beanCoordinates.setInputR('1')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 1 "/>
+                <h:commandLink class="sub" action="#{beanCoordinates.setSuperInputR('1')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 1 "/>
             <p/>
-                <h:commandLink class="sub" action="#{beanCoordinates.setInputR('1.5')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 1.5"/>
+                <h:commandLink class="sub" action="#{beanCoordinates.setSuperInputR('1.5')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 1.5"/>
             <p/>
-                <h:commandLink class="sub" action="#{beanCoordinates.setInputR('2')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 2 "/>
+                <h:commandLink class="sub" action="#{beanCoordinates.setSuperInputR('2')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 2 "/>
             <p/>
-                <h:commandLink class="sub" action="#{beanCoordinates.setInputR('2.5')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 2.5"/>
+                <h:commandLink class="sub" action="#{beanCoordinates.setSuperInputR('2.5')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 2.5"/>
             <p/>
-                <h:commandLink class="sub" action="#{beanCoordinates.setInputR('3')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 3 "/>
-#{beanCoordinates.setR(beanCoordinates.inputR)}
+                <h:commandLink class="sub" action="#{beanCoordinates.setSuperInputR('3')}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 1px; padding-bottom: 1px; font-size: 14px" name="R" value=" Параметр R = 3 "/>
+            </div>
+            <div>
+                <h:commandLink id="submition" action="#{beanCoordinates.setR(beanCoordinates.inputR)}" style="background-color: white; padding-left: 4px; padding-right: 4px; padding-top: 2px; padding-bottom: 2px; font-size: 18px" name="R" value="Submit"></h:commandLink>
             </div>
         </div>
             </div>
@@ -160,17 +162,27 @@
                 $("#forma\\:vvodx").val(Math.round((event.pageX - parentOffset.left - 100)/74));
                 $("#forma\\:vvody").val(-((event.pageY - parentOffset.top - 100)/74).toFixed(3));
                 $('#forma').trigger("submit");
+
+
+            });
+            jQuery("#da").click(function (event){
+        #{beanCoordinates.setR(beanCoordinates.inputR)}
+
+
             });
             $(window).on('scroll', function (){
                 $('#back').css('top', $(window).scrollTop()/1.5);
             });
-
+            jQuery(".sub").click(function () {
+                R = $('input[name="R"]:checked').val();
+                jQuery("#d").css("background-image", "url('GraphicsServlet?x=1000&amp;y=1000&amp;r=' + R)");
+            });
 
     </h:outputScript>
 
-    <h:outputScript src="resources/JS/three.r134.min.js"/>
-    <h:outputScript src="resources/JS/vanta.birds.min.js"/>
-    <h:outputScript src="resources/JS/app.js"/>
+    <script src="resources/JS/three.r134.min.js" type="text/javascript"></script>
+    <script src="resources/JS/vanta.birds.min.js" type="text/javascript" ></script>
+    <script src="resources/JS/app.js" type="text/javascript"></script>
 </f:view>
 </h:body>
 </html>

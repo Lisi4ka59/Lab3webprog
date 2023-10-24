@@ -17,6 +17,24 @@ public class BeanCoordinates implements Serializable {
     private String result = "";
     private String time = "";
     private String scriptTime = "";
+    private String reGraph = "true";
+    private String dotHistory;
+
+    public String getDotHistory() {
+        return dotHistory;
+    }
+
+    public void setDotHistory(String dotHistory) {
+        this.dotHistory = dotHistory;
+    }
+
+    public String getReGraph() {
+        return reGraph;
+    }
+
+    public void setReGraph(String reGraph) {
+        this.reGraph = reGraph;
+    }
 
     public String getResult() {
         return result;
@@ -56,9 +74,18 @@ public class BeanCoordinates implements Serializable {
 
     public void setInputR(String inputR) {
         this.inputR = inputR;
+        this.reGraph = "true";
+    }
+    public void setSuperInputR(String inputR) {
+        this.inputR = inputR;
+        this.inputY = "0";
+        this.inputX = "1000";
+
+
     }
     public void setR(String inputR) {
         long time = System.nanoTime();
+        this.reGraph = "true";
         setInputR(inputR);
         if (inputX != null && inputY != null) {
             float X = Float.parseFloat(inputX);

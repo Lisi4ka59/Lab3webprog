@@ -2,8 +2,10 @@
 f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øˆ´‰
 f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øˆ´‰
 f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Øˆ´‰
+^
+java:S4973"<Strings and Boxed types should be compared using "equals()".(¯û€—ýÿÿÿÿ8¬–û÷µ1
 <
 java:S1110
-"!Remove these useless parentheses.(éª³¬þÿÿÿÿ
-7
-java:S1110"!Remove these useless parentheses.(ÃÛ›ã
+"!Remove these useless parentheses.(þœýéøÿÿÿÿ
+<
+java:S1110"!Remove these useless parentheses.(¯û€—ýÿÿÿÿ

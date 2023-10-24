@@ -20,7 +20,7 @@ import java.util.Enumeration;
 public class GraphicsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
+        response.setCharacterEncoding("utf-8");
         response.setContentType("image/jpeg");
         ServletOutputStream out = response.getOutputStream();
 
@@ -28,6 +28,14 @@ public class GraphicsServlet extends HttpServlet {
 
     float x = (Float.parseFloat(request.getParameter("x")));
     float y = (Float.parseFloat(request.getParameter("y")));
+        boolean is = true;
+    try{
+        if(request.getParameter("e") == null){
+            is = false;
+        }
+    }catch (Exception ex){
+        is = true;
+    }
 
         float radius;
         float random = 0.5F;
@@ -132,12 +140,44 @@ public class GraphicsServlet extends HttpServlet {
 //            graphics.setColor(new Color(r,g,b));
 //            graphics.fillOval(newX - 2, -(newY + 2), 5, 5);
 //        }
-        graphics.dispose();
-        if (x != 1000) {
+
+        if (x != 1000 && is) {
             HttpSession session = request.getSession();
-            String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(Calendar.getInstance().getTimeInMillis());
-            session.setAttribute(time, ((x - 100) / 74 * radius) + "@" + ((100 - y) / 74 * radius) + "@" + radius + "@" + time + "@" + "1" + "@" + text + "#" + re + "%" + gr + "%" + bl);
+            String Res = "";
+            try {
+                Res = (String) session.getAttribute("res");
+                if (Res == null){
+                    Res = "";
+                }
+                System.out.println(Res);
+            session.removeAttribute("res");
+            String[] info = Res.split("&");
+
+                for (String s:info) {
+            String[] pr = s.split("#");
+            String[] atr = pr[0].split("@");
+            float oldX = Float.parseFloat(atr[0]);
+            float oldY = Float.parseFloat(atr[1]);
+
+            float oX = oldX * 74 / radius;
+            float oY = oldY * 74 / radius;
+            int newX = Math.round(((oX)+100));
+            int newY = -Math.round(-((oY)-100));
+            String[] color = pr[1].split("%");
+            int r = Integer.parseInt(color[0]);
+            int g = Integer.parseInt(color[1]);
+            int b = Integer.parseInt(color[2]);
+                graphics.setColor(new Color(r, g, b));
+                graphics.fillOval(newX - 2, -(newY + 2), 5, 5);
         }
+            }catch (Exception ex){
+                //ex.printStackTrace();
+            }
+            String prome = Res;
+            Res = prome + (String)( ((x - 100) / 74 * radius) + "@" + ((100 - y) / 74 * radius) + "@" + radius + text + "#" + re + "%" + gr + "%" + bl + "&");
+            session.setAttribute("res", Res);
+        }
+        graphics.dispose();
         ImageIO.write(image, "jpeg", out);
         out.close();
     }
