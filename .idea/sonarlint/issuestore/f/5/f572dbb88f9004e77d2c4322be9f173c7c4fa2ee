@@ -1,9 +1,19 @@
 
-r	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØüÒ“úÿÿÿÿ8å©“ëµ1
-m	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş÷¡±8æ©“ëµ1
-r	java:S1174"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­šğûÿÿÿÿ8æ©“ëµ1
-]	java:S125q"<This block of commented-out lines of code should be removed.(ÈñòÊÿÿÿÿÿ8ª“ëµ1
+r	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ØüÒ“úÿÿÿÿ8ÄÕ‡¶1
+m	java:S117;"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş÷¡±8ÆÕ‡¶1
+r	java:S117<"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­šğûÿÿÿÿ8ÇÕ‡¶1
+n	java:S117’"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”¦‡Á8ÈÕ‡¶1
+‚
+java:S4165%"`Remove this useless assignment; "is" already holds the assigned value along all execution paths.(†÷ÒŒùÿÿÿÿ8ªö×‡¶1
+]	java:S125y"<This block of commented-out lines of code should be removed.(ÈñòÊÿÿÿÿÿ8ô Õ‡¶1
+Y	java:S125®"<This block of commented-out lines of code should be removed.(ì‘òŠ8û Õ‡¶1
+L
+java:S1905±")Remove this unnecessary cast to "String".(ÔçòÉøÿÿÿÿ8ü Õ‡¶1
+T
+java:S1128"7Remove this unused import 'java.text.SimpleDateFormat'.(ú¡ÙÛ8ı Õ‡¶1
 M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ª“ëµ1
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ı Õ‡¶1
+L
+java:S1128"/Remove this unused import 'java.util.Calendar'.(ÿÛö´8ı Õ‡¶1
 O
-java:S1128"2Remove this unused import 'java.util.Enumeration'.(»îÜ®8ª“ëµ1
+java:S1128"2Remove this unused import 'java.util.Enumeration'.(»îÜ®8ş Õ‡¶1

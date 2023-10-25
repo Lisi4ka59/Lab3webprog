@@ -5,6 +5,7 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 @Named("beanCoordinates")
@@ -18,14 +19,17 @@ public class BeanCoordinates implements Serializable {
     private String time = "";
     private String scriptTime = "";
     private String reGraph = "true";
-    private String dotHistory;
+    private ArrayList<BeanHistory> dotHistory = new ArrayList<BeanHistory>();
 
-    public String getDotHistory() {
+    public ArrayList<BeanHistory> getDotHistory() {
         return dotHistory;
     }
 
-    public void setDotHistory(String dotHistory) {
+    public void setDotHistory(ArrayList<BeanHistory> dotHistory) {
         this.dotHistory = dotHistory;
+    }
+    public void setSuperDotHistory(BeanHistory dotHistory) {
+        this.dotHistory.add(dotHistory);
     }
 
     public String getReGraph() {

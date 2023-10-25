@@ -1,23 +1,23 @@
 package com.lisi4ka.web_lab3;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Enumeration;
+
 
 @WebServlet(name = "GraphicsServlet", value = "/GraphicsServlet")
 public class GraphicsServlet extends HttpServlet {
+    @Inject
+    private BeanCoordinates beanCoordinates;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("utf-8");
@@ -26,25 +26,18 @@ public class GraphicsServlet extends HttpServlet {
 
         BufferedImage image = new BufferedImage(200, 200, BufferedImage.TYPE_BYTE_INDEXED);
 
-    float x = (Float.parseFloat(request.getParameter("x")));
-    float y = (Float.parseFloat(request.getParameter("y")));
-        boolean is = true;
-    try{
-        if(request.getParameter("e") == null){
-            is = false;
-        }
-    }catch (Exception ex){
-        is = true;
-    }
+        float x = (Float.parseFloat(request.getParameter("x")));
+        float y = (Float.parseFloat(request.getParameter("y")));
+
 
         float radius;
         float random = 0.5F;
         try {
             radius = Float.parseFloat(request.getParameter("r"));
-        }catch (Exception ex){
+        } catch (Exception ex) {
             Graphics2D graphics = image.createGraphics();
             graphics.setColor(Color.WHITE);
-            graphics.fillRect(0,0, 200, 200);
+            graphics.fillRect(0, 0, 200, 200);
             graphics.setColor(Color.red);
             graphics.drawString("Parameter R not found!", 30, 90);
             graphics.dispose();
@@ -53,10 +46,10 @@ public class GraphicsServlet extends HttpServlet {
             return;
         }
 
-        int roundx = Math.round(x-100);
-        int roundy = -Math.round(y-100);
-        float X = (x-100)*radius;
-        float Y = -(y-100)*radius;
+        int roundx = Math.round(x - 100);
+        int roundy = -Math.round(y - 100);
+        float X = (x - 100) * radius;
+        float Y = -(y - 100) * radius;
         float R = radius * 74;
 
         int gr;
@@ -71,15 +64,14 @@ public class GraphicsServlet extends HttpServlet {
         text = result[3];
 
 
-
         Graphics2D graphics = image.createGraphics();
-        graphics.setColor(new Color(255,255,255));
-        graphics.fillRect(0,0, 200, 200);
+        graphics.setColor(new Color(255, 255, 255));
+        graphics.fillRect(0, 0, 200, 200);
         graphics.setColor(new Color(51, 153, 255));
-        graphics.fillRect(27+37, 100-72, 35, 72);
+        graphics.fillRect(27 + 37, 100 - 72, 35, 72);
         graphics.fillArc(62, 62, 75, 75, 270, 90);
-        graphics.fillPolygon(new int[]{100, 100, 173}, new int[] {100, 26, 100}, 3);
-        graphics.setColor(new Color(0,0,0));
+        graphics.fillPolygon(new int[]{100, 100, 173}, new int[]{100, 26, 100}, 3);
+        graphics.setColor(new Color(0, 0, 0));
         graphics.fillRect(8, 99, 184, 2);
         graphics.fillRect(99, 8, 2, 184);
 
@@ -94,91 +86,54 @@ public class GraphicsServlet extends HttpServlet {
         graphics.fillRect(96, 172, 8, 2);
 
 
-        graphics.fillPolygon(new int[]{188, 188, 196}, new int[] {96, 104, 100}, 3);
-        graphics.fillPolygon(new int[]{96, 104, 100}, new int[] {12, 12, 4}, 3);
+        graphics.fillPolygon(new int[]{188, 188, 196}, new int[]{96, 104, 100}, 3);
+        graphics.fillPolygon(new int[]{96, 104, 100}, new int[]{12, 12, 4}, 3);
 
 
-        graphics.drawString(String.valueOf(radius), 164,92);
-        graphics.drawString(String.valueOf(radius/2), 164 - 36,92);
-        graphics.drawString(String.valueOf(-radius/2), 164 - 109,92);
-        graphics.drawString(String.valueOf(-radius), 164 - 145,92);
+        graphics.drawString(String.valueOf(radius), 164, 92);
+        graphics.drawString(String.valueOf(radius / 2), 164 - 36, 92);
+        graphics.drawString(String.valueOf(-radius / 2), 164 - 109, 92);
+        graphics.drawString(String.valueOf(-radius), 164 - 145, 92);
 
 
-        graphics.drawString(String.valueOf(radius), 106,32);
-        graphics.drawString(String.valueOf(radius/2), 106,32 + 36);
-        graphics.drawString(String.valueOf(-radius/2), 106,32 + 36*3+1);
-        graphics.drawString(String.valueOf(-radius), 106,32 + 36*3+1 +36);
+        graphics.drawString(String.valueOf(radius), 106, 32);
+        graphics.drawString(String.valueOf(radius / 2), 106, 32 + 36);
+        graphics.drawString(String.valueOf(-radius / 2), 106, 32 + 36 * 3 + 1);
+        graphics.drawString(String.valueOf(-radius), 106, 32 + 36 * 3 + 1 + 36);
 
-        graphics.drawString("X", 185,117);
-        graphics.drawString("Y", 107,15);
-
+        graphics.drawString("X", 185, 117);
+        graphics.drawString("Y", 107, 15);
 
 
         if (x != 1000) {
             graphics.setColor(new Color(re, gr, bl));
             graphics.fillOval(roundx + 100 - 3, -(roundy - 100 + 3), 5, 5);
         }
-//        Enumeration<String> attributes = request.getSession().getAttributeNames();
-//        ArrayList<String> list = new ArrayList<>();
-//        while (attributes.hasMoreElements()) {
-//            String attribute = attributes.nextElement();
-//            list.add(attribute);
-//        }
-//        for (String s:list) {
-//            String[] pr = ((String) request.getSession().getAttribute(s)).split("#");
-//            String[] atr = pr[0].split("@");
-//            float oldX = Float.parseFloat(atr[0]);
-//            float oldY = Float.parseFloat(atr[1]);
-//            float oX = oldX * 74 / radius;
-//            float oY = oldY * 74 / radius;
-//            int newX = Math.round(((oX)+100));
-//            int newY = -Math.round(-((oY)-100));
-//            String[] color = pr[1].split("%");
-//            int r = Integer.parseInt(color[0]);
-//            int g = Integer.parseInt(color[1]);
-//            int b = Integer.parseInt(color[2]);
-//            graphics.setColor(new Color(r,g,b));
-//            graphics.fillOval(newX - 2, -(newY + 2), 5, 5);
-//        }
 
-        if (x != 1000 && is) {
-            HttpSession session = request.getSession();
-            String Res = "";
+
+        if (x != 1000 && beanCoordinates != null) {
             try {
-                Res = (String) session.getAttribute("res");
-                if (Res == null){
-                    Res = "";
+                ArrayList<BeanHistory> beanHistories = beanCoordinates.getDotHistory();
+
+                for (BeanHistory beanHistory : beanHistories) {
+                    int newX = Math.round(((beanHistory.getX() * 74 / radius) + 100));
+                    int newY = -Math.round(-((beanHistory.getY() * 74 / radius) - 100));
+                    int r = beanHistory.getRe();
+                    int g = beanHistory.getG();
+                    int b = beanHistory.getB();
+                    graphics.setColor(new Color(r, g, b));
+                    graphics.fillOval(newX - 2, -(newY + 2), 5, 5);
                 }
-                System.out.println(Res);
-            session.removeAttribute("res");
-            String[] info = Res.split("&");
+            }catch (NullPointerException ignored){}
 
-                for (String s:info) {
-            String[] pr = s.split("#");
-            String[] atr = pr[0].split("@");
-            float oldX = Float.parseFloat(atr[0]);
-            float oldY = Float.parseFloat(atr[1]);
-
-            float oX = oldX * 74 / radius;
-            float oY = oldY * 74 / radius;
-            int newX = Math.round(((oX)+100));
-            int newY = -Math.round(-((oY)-100));
-            String[] color = pr[1].split("%");
-            int r = Integer.parseInt(color[0]);
-            int g = Integer.parseInt(color[1]);
-            int b = Integer.parseInt(color[2]);
-                graphics.setColor(new Color(r, g, b));
-                graphics.fillOval(newX - 2, -(newY + 2), 5, 5);
         }
-            }catch (Exception ex){
-                //ex.printStackTrace();
-            }
-            String prome = Res;
-            Res = prome + (String)( ((x - 100) / 74 * radius) + "@" + ((100 - y) / 74 * radius) + "@" + radius + text + "#" + re + "%" + gr + "%" + bl + "&");
-            session.setAttribute("res", Res);
+        if (beanCoordinates != null){
+            BeanHistory beanHistory = new BeanHistory((x - 100) / 74 * radius, (100 - y) / 74 * radius, re, gr, bl);
+            beanCoordinates.setSuperDotHistory(beanHistory);
         }
         graphics.dispose();
         ImageIO.write(image, "jpeg", out);
         out.close();
+
     }
 }
